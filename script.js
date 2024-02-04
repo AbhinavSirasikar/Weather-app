@@ -27,28 +27,28 @@ search.addEventListener('click', () => {
             const image = document.querySelector(".weather-box img");
             const temperature = document.querySelector(".weather-box .temperature");
             const description = document.querySelector(".weather-box .description");
-            const humidity = document.querySelector("weather-box .humidity span");
-            const wind = document.querySelector("weather-box .wind span");
+            const humidity = document.querySelector(".weather-details .humidity span");
+            const wind = document.querySelector(".weather-details .wind span");
 
             switch (json.weather[0].main) {
                 case "Clear":
-                    image.src = "./image/clear.png"
+                    image.src = "images/clear.png"
                     break;
 
                 case "Snow":
-                    image.src = "./image/snow.png"
+                    image.src = "images/snow.png"
                     break;
 
                 case "Rain":
-                    image.src = "./image/rain.png"
+                    image.src = "images/rain.png"
                     break;
 
                 case "Clouds":
-                    image.src = "./image/clouds.png"
+                    image.src = "images/cloud.png"
                     break;
 
                 case "Haze":
-                    image.src = "./image/haze.png"
+                    image.src = "images/mist.png"
                     break;
 
                 default:
@@ -57,6 +57,16 @@ search.addEventListener('click', () => {
 
 
             temperature.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
+            description.innerHTML = `${json.weather[0].description}`;
+            humidity.innerHTML = `${json.main.humidity}`
+            wind.innerHTML = `${json.wind.speed}Km/hr`;
+
+            weatherBox.style.display = "";
+            weatherDetails.style.display = "";
+            weatherBox.classList.add("fadeIn");
+            weatherDetails.classList.add("fadeIn");
+            container.style.height = "590px";
+
 
         })
 
